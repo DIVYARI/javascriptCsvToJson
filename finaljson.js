@@ -17,7 +17,11 @@ const rl = readline.createInterface({
   var output=[];
   var bar1=[];
   var bar2=[];
+  var arr6=[];
   var k=0;
+  var sumu=0;
+  var sumr=0;
+
   var a_c = ["Afghanistan", "Bahrain", "Bangladesh", "Bhutan", "Myanmar", "Cambodia", "China", "India", "Indonesia", "Iraq", "Israel", "Japan", "Jordan", "Kazakhstan", "Lebanon", "Malaysia", "Maldives", "Mongolia", "Nepal",
   "Oman", "Pakistan", "Philippines", "Qatar", "Saudi Arabia", "Singapore", "Sri Lanka", "Syrian Arab Republic", "Tajikistan", "Thailand", "Timor-Leste", "Turkmenistan", "United Arab Emirates", "Uzbekistan", "Vietnam", "Yemen"];
     rl.on('line', function (line){
@@ -71,6 +75,8 @@ for(y=1960;y<=2015;y++){
 
 if(bar2[i].year==y){
     //  urbanAndRural.push({IndicatorName:bar2[i].IndicatorName,year:bar2[i].year,value:bar2[i].value});
+    sumu=sumu+parseFloat(bar2[i].value);
+    sumr=sumr+parseFloat(bar2[i].value);
       sum=sum+(parseFloat(bar2[i].value))+(parseFloat(bar2[i+1].value));
       urbanAndRural.push({CountryName:bar2[i].CountryName,value:sum});
       // console.log(bar2[i].CountryName+bar2[i].year+" "+(parseFloat(bar2[i].value))+bar2[i].IndicatorName);
@@ -86,8 +92,12 @@ urbanAndRural.sort(function(a,b){
   //obj1[bar2[i].year]=urbanAndRural;
      }
 urbanAndRural=[];
+arr6.push({"year":y,"urban":sumu,"rural":sumr});
+sumu=0;
+sumr=0;
 }
- output2.write(JSON.stringify(obj1));
+console.log(arr6);
+ output2.write(JSON.stringify(arr6));
   output1.write(JSON.stringify(bar1));
 //console.log(bar1);
 //console.log(obj1);<!--part2-->
