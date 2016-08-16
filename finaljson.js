@@ -74,13 +74,12 @@ for(y=1960;y<=2015;y++){
       if(bar2[i].CountryName==a_c[k]){
 
 if(bar2[i].year==y){
-    //  urbanAndRural.push({IndicatorName:bar2[i].IndicatorName,year:bar2[i].year,value:bar2[i].value});
+
     sumu=sumu+parseFloat(bar2[i].value);
-    sumr=sumr+parseFloat(bar2[i].value);
+    sumr=sumr+parseFloat(bar2[i+1].value);
       sum=sum+(parseFloat(bar2[i].value))+(parseFloat(bar2[i+1].value));
       urbanAndRural.push({CountryName:bar2[i].CountryName,value:sum});
-      // console.log(bar2[i].CountryName+bar2[i].year+" "+(parseFloat(bar2[i].value))+bar2[i].IndicatorName);
-      //console.log(bar2[i].CountryName+" "+bar2[i].year+" "+sum);
+
 urbanAndRural.sort(function(a,b){
   return b.value-a.value;
 });
@@ -89,7 +88,7 @@ urbanAndRural.sort(function(a,b){
     }
   }
   }
-  //obj1[bar2[i].year]=urbanAndRural;
+
      }
 urbanAndRural=[];
 arr6.push({"year":y,"urban":sumu,"rural":sumr});
